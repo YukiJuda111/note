@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://yukijuda111.github.io/note/blockchain/solidity/ERC-20/</loc>
+         <lastmod>2024-03-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/raffle/</loc>
          <lastmod>2024-03-04</lastmod>
          <changefreq>daily</changefreq>
