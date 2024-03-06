@@ -322,6 +322,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Principle
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -331,6 +342,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      共识算法
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -498,6 +537,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      共识算法
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -515,8 +571,14 @@
 
 
 <h1 id="principle-of-blockchain">Principle of blockchain</h1>
-<p><img alt="Principle of blockchain" src="../img/%E6%88%AA%E5%B1%8F2024-03-06%2019.19.44.png" />
-用hash校验(hash -&gt; 0开头)</p>
+<p>用hash校验(hash -&gt; 108 -&gt; 205 -&gt; 308...) 一但更改，hash结果出错，放弃该block以及后面全部的block
+<img alt="Principle of blockchain" src="../img/%E6%88%AA%E5%B1%8F2024-03-06%2019.19.44.png" /></p>
+<p>出错的地方和其他的block的tx进行比对
+<img alt="Principle of blockchain" src="../img/%E6%88%AA%E5%B1%8F2024-03-06%2019.34.14.png" /></p>
+<h2 id="_1">共识算法</h2>
+<p>POW: Proof of Work 赚的是gas fee，谁最先算出来hash，谁就可以打包block。验证交易后扩散该交易到其他节点。
+<img alt="Principle of blockchain" src="../img/%E6%88%AA%E5%B1%8F2024-03-06%2020.30.05.png" />
+！<a href="../img/%E6%88%AA%E5%B1%8F2024-03-06%2020.39.51.png">Principle of blockchain</a></p>
 
 
 
