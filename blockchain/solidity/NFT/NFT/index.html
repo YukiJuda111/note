@@ -10,16 +10,16 @@
       
       
       
-        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/NFT/">
+        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/NFT/NFT/">
       
       
-        <link rel="prev" href="../ERC-20/">
+        <link rel="prev" href="../../ERC-20/">
       
       
-        <link rel="next" href="../../../about/">
+        <link rel="next" href="../../../../about/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e359304.min.css">
       
       
 
@@ -47,7 +47,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Yuk1&#39;s note" class="md-header__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
+    <a href="../../../.." title="Yuk1&#39;s note" class="md-header__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -189,7 +189,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Yuk1&#39;s note" class="md-nav__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
+    <a href="../../../.." title="Yuk1&#39;s note" class="md-nav__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -311,11 +311,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../course/principle/" class="md-nav__link">
+      <a href="../../../course/lesson1/principle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Principle
+    lesson1
   </span>
   
 
@@ -377,7 +377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../raffle/" class="md-nav__link">
+      <a href="../../raffle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -398,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ERC-20/" class="md-nav__link">
+      <a href="../../ERC-20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -469,6 +469,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#erc-721" class="md-nav__link">
+    <span class="md-ellipsis">
+      ERC-721 核心函数:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sepoliadoggie-nft" class="md-nav__link">
+    <span class="md-ellipsis">
+      在sepolia上部署的Doggie NFT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-hostmood-nft" class="md-nav__link">
+    <span class="md-ellipsis">
+      在Local host上部署的Mood NFT
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -500,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../../../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -546,6 +573,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#erc-721" class="md-nav__link">
+    <span class="md-ellipsis">
+      ERC-721 核心函数:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sepoliadoggie-nft" class="md-nav__link">
+    <span class="md-ellipsis">
+      在sepolia上部署的Doggie NFT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-hostmood-nft" class="md-nav__link">
+    <span class="md-ellipsis">
+      在Local host上部署的Mood NFT
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -566,11 +620,19 @@
 
   <h1>NFT</h1>
 
-<h4 id="repofoundry-nft">repo:<a href="https://github.com/YukiJuda111/foundry-nft">foundry-nft</a></h4>
+<h2 id="repofoundry-nft">repo:<a href="https://github.com/YukiJuda111/foundry-nft">foundry-nft</a></h2>
 <p>本质是ID到拥有者地址的映射<code>mapping (uint256 =&gt; address) public tokenOwner;</code></p>
 <p>用metadata来描述NFT的属性，比如图片、音频、视频等。NFT的metadata可以存储在链上，也可以存储在链下。存储在链上的metadata可以通过IPFS来实现。</p>
 <p><strong>URI</strong>：NFT的metadata的URI，可以是链上的，也可以是链下的。链上的URI可以通过IPFS来实现。</p>
 <p><strong>IPFS</strong>: 将自己的File通过hash的到一个独特的URI，然后将这个URI存储在自己的IPFS节点上。这样，其他人就可以通过这个URI来访问自己的File了。</p>
+<h2 id="erc-721">ERC-721 核心函数:</h2>
+<p><code>_safeMint(msg.sender, tokenId)</code>：给msg.sender铸造一个tokenId的NFT。
+<code>tokenURI(tokenId)</code>：返回tokenId的metadata的URI。
+<code>_baseURI()</code>：返回metadata的baseURI, 用于拼接tokenURI(tokenId)。</p>
+<h2 id="sepoliadoggie-nft">在sepolia上部署的Doggie NFT</h2>
+<p><img alt="Doggie NFT" src="../img/result2.png" /></p>
+<h2 id="local-hostmood-nft">在Local host上部署的Mood NFT</h2>
+<p><img alt="Mood NFT" src="../img/result.png" /></p>
 
 
 
@@ -621,10 +683,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>

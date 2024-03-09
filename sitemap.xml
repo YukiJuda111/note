@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://yukijuda111.github.io/note/</loc>
-         <lastmod>2024-03-07</lastmod>
+         <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/about/</loc>
-         <lastmod>2024-03-07</lastmod>
+         <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://yukijuda111.github.io/note/blockchain/course/principle/</loc>
-         <lastmod>2024-03-07</lastmod>
+         <loc>https://yukijuda111.github.io/note/blockchain/course/lesson1/principle/</loc>
+         <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/ERC-20/</loc>
-         <lastmod>2024-03-07</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://yukijuda111.github.io/note/blockchain/solidity/NFT/</loc>
-         <lastmod>2024-03-07</lastmod>
+         <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/raffle/</loc>
-         <lastmod>2024-03-07</lastmod>
+         <lastmod>2024-03-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://yukijuda111.github.io/note/blockchain/solidity/NFT/NFT/</loc>
+         <lastmod>2024-03-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
