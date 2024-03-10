@@ -492,6 +492,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="通过data field of call实现function call需要encode：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-selector" class="md-nav__link">
+    <span class="md-ellipsis">
+      function selector
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -571,6 +586,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="通过data field of call实现function call需要encode：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-selector" class="md-nav__link">
+    <span class="md-ellipsis">
+      function selector
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -613,14 +643,40 @@ EVM负责编译合约.sol文件，生成二进制文件.bin和接口文件.abi</
 </code></pre>
 <h2 id="data-field-of-callfunction-callencode">通过data field of call实现function call需要encode：</h2>
 <ul>
-<li>function name</li>
+<li>function selector</li>
 <li>parameters</li>
 </ul>
+<h3 id="function-selector">function selector</h3>
 <p>The "function selector" is the first 4 bytes of the keccak256 hash of the function signature. The "function signature" is a string that defines the function name &amp; parameters.</p>
 <pre><code>// example of function signature:
 &quot;transfer(address,uint256)&quot;
 // example of function selector:
 0xa9059cbb(encode the function signature and take the first 4 bytes)
+</code></pre>
+<pre><code class="language-solidity">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+
+contract CallAnything {
+    address public s_someAddr;
+    uint256 public s_amount;
+    function transfer(address someAddr, uint256 amount) public {
+        s_someAddr = someAddr;
+        s_amount = amount;
+    }
+
+    function getSelectorOne() public  pure returns (bytes4 selector) {
+        return bytes4(keccak256(bytes(&quot;transfer(address,uint256)&quot;)));
+    }
+
+    function getDataToCallTransfer(address someAddr, uint256 amount) public pure returns (bytes memory) {
+        return abi.encodeWithSelector(getSelectorOne(), someAddr, amount);
+    }
+
+    function callTransferFunctionWithBinary(address someAddr, uint256 amount) public returns(bytes4,bool){
+        (bool success,bytes memory returnData) = address(this).call(getDataToCallTransfer(someAddr, amount));
+        return (bytes4(returnData), success);
+    }
+}
 </code></pre>
 
 
