@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/NFT/NFT/">
+        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/StableCoin/StableCoin/">
       
       
-        <link rel="prev" href="../../ERC-20/">
+        <link rel="prev" href="../../EVM/">
       
       
-        <link rel="next" href="../../EVM/">
+        <link rel="next" href="../../../../SE/chapter6/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>NFT - Yuk1's note</title>
+        <title>StableCoin - Yuk1's note</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#repofoundry-nft" class="md-skip">
+        <a href="#stablecoin-defi" class="md-skip">
           跳转至
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NFT
+              StableCoin
             
           </span>
         </div>
@@ -416,28 +416,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    NFT
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../NFT/NFT/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -446,60 +428,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#repofoundry-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      repo:foundry-nft
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erc-721" class="md-nav__link">
-    <span class="md-ellipsis">
-      ERC-721 核心函数:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sepoliadoggie-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      在sepolia上部署的Doggie NFT
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-hostmood-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      在Local host上部署的Mood NFT
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -530,10 +458,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../StableCoin/StableCoin/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    StableCoin
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -542,6 +490,203 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      StableCoin分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="StableCoin分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pegged-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      pegged stablecoin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#floating-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      floating stablecoin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      algorithmic stablecoin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governed-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      governed stablecoin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collateralized-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      collateralized stablecoin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erc20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ERC20
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dscengine" class="md-nav__link">
+    <span class="md-ellipsis">
+      DscEngine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DscEngine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      构造函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      质押
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      铸造DSC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="铸造DSC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mintdsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      mintDsc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_revertifhealthfactorisbroken" class="md-nav__link">
+    <span class="md-ellipsis">
+      _revertIfHealthFactorIsBroken
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_healthfactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      _healthFactor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pricefeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      priceFeed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -704,6 +849,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -712,38 +859,179 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#repofoundry-nft" class="md-nav__link">
+  <a href="#stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      repo:foundry-nft
+      StableCoin分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="StableCoin分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pegged-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      pegged stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#erc-721" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#floating-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      ERC-721 核心函数:
+      floating stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#sepoliadoggie-nft" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      在sepolia上部署的Doggie NFT
+      algorithmic stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#local-hostmood-nft" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#governed-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      在Local host上部署的Mood NFT
+      governed stablecoin
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collateralized-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      collateralized stablecoin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erc20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ERC20
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dscengine" class="md-nav__link">
+    <span class="md-ellipsis">
+      DscEngine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DscEngine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      构造函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      质押
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      铸造DSC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="铸造DSC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mintdsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      mintDsc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_revertifhealthfactorisbroken" class="md-nav__link">
+    <span class="md-ellipsis">
+      _revertIfHealthFactorIsBroken
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_healthfactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      _healthFactor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pricefeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      priceFeed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -765,21 +1053,158 @@
   
 
 
-  <h1>NFT</h1>
-
-<h2 id="repofoundry-nft">repo:<a href="https://github.com/YukiJuda111/foundry-nft">foundry-nft</a></h2>
-<p>本质是ID到拥有者地址的映射<code>mapping (uint256 =&gt; address) public tokenOwner;</code></p>
-<p>用metadata来描述NFT的属性，比如图片、音频、视频等。NFT的metadata可以存储在链上，也可以存储在链下。存储在链上的metadata可以通过IPFS来实现。</p>
-<p><strong>URI</strong>：NFT的metadata的URI，可以是链上的，也可以是链下的。链上的URI可以通过IPFS来实现。</p>
-<p><strong>IPFS</strong>: 将自己的File通过hash的到一个独特的URI，然后将这个URI存储在自己的IPFS节点上。这样，其他人就可以通过这个URI来访问自己的File了。</p>
-<h2 id="erc-721">ERC-721 核心函数:</h2>
-<p><code>_safeMint(msg.sender, tokenId)</code>：给msg.sender铸造一个tokenId的NFT。
-<code>tokenURI(tokenId)</code>：返回tokenId的metadata的URI。
-<code>_baseURI()</code>：返回metadata的baseURI, 用于拼接tokenURI(tokenId)。</p>
-<h2 id="sepoliadoggie-nft">在sepolia上部署的Doggie NFT</h2>
-<p><img alt="Doggie NFT" src="../img/result2.png" /></p>
-<h2 id="local-hostmood-nft">在Local host上部署的Mood NFT</h2>
-<p><img alt="Mood NFT" src="../img/result.png" /></p>
+<h1 id="stablecoin-defi">StableCoin Defi复盘</h1>
+<h2 id="stablecoin">StableCoin分类</h2>
+<h3 id="pegged-stablecoin">pegged stablecoin</h3>
+<ul>
+<li>A pegged stablecoin is a stablecoin that is pegged to a specific value, such as the US dollar.</li>
+<li>The value of a pegged stablecoin is maintained by a central authority, which holds reserves of the asset that the stablecoin is pegged to. Example: USDT, USDC</li>
+</ul>
+<h3 id="floating-stablecoin">floating stablecoin</h3>
+<ul>
+<li>A floating stablecoin is a stablecoin that is not pegged to a specific value.</li>
+<li>The value of a floating stablecoin is determined by the market, and can fluctuate based on supply and demand. </li>
+</ul>
+<h3 id="algorithmic-stablecoin">algorithmic stablecoin</h3>
+<ul>
+<li>An algorithmic stablecoin is a stablecoin that uses an algorithm to maintain its value.</li>
+</ul>
+<h3 id="governed-stablecoin">governed stablecoin</h3>
+<ul>
+<li>A governed stablecoin is a stablecoin that is governed by a decentralized community of stakeholders.</li>
+</ul>
+<h3 id="collateralized-stablecoin">collateralized stablecoin</h3>
+<ul>
+<li>The deposit of collateral is always greater than the minted stable coin</li>
+</ul>
+<h2 id="code">Code</h2>
+<h3 id="_1">目标</h3>
+<p>类似与<strong>DAI</strong>的stablecoin：</p>
+<ol>
+<li>Relative Stability: Pegged -&gt; 1USD</li>
+<li>Chainlink PriceFeed</li>
+<li>Set a function to exchange ETH &amp; BTC -&gt; USD</li>
+<li>Stability Mechanism: Algorithmic (Decentralized)</li>
+<li>People can only mint the stablecoin with enough collateral</li>
+<li>Collateral: Exogenous (Crypto)</li>
+<li>wETH</li>
+<li>wBTC</li>
+</ol>
+<h3 id="erc20">ERC20</h3>
+<p>提供<code>mint</code>和<code>burn</code>接口，供<code>DscEngine</code>使用</p>
+<ul>
+<li><code>mint</code>: 在逻辑上负责铸造token，<code>_mint</code>调用负责将token从<code>0x0</code>发送到指定地址(user)</li>
+</ul>
+<p><code>solidity
+  function mint(address _to, uint256 _amount) external onlyOwner returns (bool) {
+      if (_to == address(0)) {
+          revert DecentralizedStableCoin__NotZeroAddress();
+      }
+      if (_amount &lt;= 0) {
+          revert DecentralizedStableCoin__MustBeMoreThanZero();
+      }
+      _mint(_to, _amount);
+      return true;
+  }</code></p>
+<ul>
+<li><code>burn</code>: 在逻辑上负责销毁token，<code>_burn</code>调用本质上讲<code>msg.sender</code>的token还给<code>0x0</code></li>
+</ul>
+<p><code>solidity
+  function mint(address _to, uint256 _amount) external onlyOwner returns (bool) {
+      if (_to == address(0)) {
+          revert DecentralizedStableCoin__NotZeroAddress();
+      }
+      if (_amount &lt;= 0) {
+          revert DecentralizedStableCoin__MustBeMoreThanZero();
+      }
+      _mint(_to, _amount);
+      return true;
+  }</code></p>
+<h2 id="dscengine">DscEngine</h2>
+<p>Defi的主要逻辑由<code>DscEngin.sol</code>实现：</p>
+<ul>
+<li>构造函数</li>
+<li>质押</li>
+</ul>
+<h3 id="_2">构造函数</h3>
+<p>在部署合约时，由外部提供质押代币地址，喂价地址和token地址(需要先部署token再部署engine)。质押的代币采用:weth,wbtc。</p>
+<pre><code class="language-solidity">constructor(address[] memory tokenAddresses, address[] memory priceFeedAddresses, address dscAddress) {
+    if (tokenAddresses.length != priceFeedAddresses.length) {
+        revert DSCEngine__TokenAddressAndPriceFeedAddressMustBeEqualLength();
+    }
+    for (uint256 i = 0; i &lt; tokenAddresses.length; i++) {
+        s_priceFeeds[tokenAddresses[i]] = priceFeedAddresses[i];
+        s_collateralTokens.push(tokenAddresses[i]);
+    }
+    i_dsc = DecentralizedStableCoin(dscAddress);
+}
+</code></pre>
+<h3 id="_3">质押</h3>
+<p>传入质押代币的地址，因为weth和wbtc采用ERC20标准，可以通过IERC20的接口发送函数签名去调用。同时用<code>s_collateralDeposited</code>去记录每个用户的质押代币数量。</p>
+<pre><code class="language-solidity">mapping(address user =&gt; mapping(address token =&gt; uint256 amount)) private s_collateralDeposited;
+</code></pre>
+<pre><code class="language-solidity">function depositCollateral(address tokenCollateral, uint256 amoutCollateral)
+    external
+    moreThanZero(amoutCollateral)
+    isAllowedToken(tokenCollateral)
+    nonReentrant // 不可重入(more gas fee, safer)
+{
+    s_collateralDeposited[msg.sender][tokenCollateral] += amoutCollateral;
+    emit CollateralDeposited(msg.sender, tokenCollateral, amoutCollateral);
+    bool success = IERC20(tokenCollateral).transferFrom(msg.sender, address(this), amoutCollateral);
+    if(!success) {
+        revert DSCEngine__TransferFailed();
+    }
+}
+</code></pre>
+<h3 id="dsc">铸造DSC</h3>
+<h4 id="mintdsc">mintDsc</h4>
+<p>调用刚才自己编写的ERC20 Token的<code>mint</code>来铸造DSC。</p>
+<pre><code class="language-solidity">function mintDsc(uint256 amountDscToMint)
+    external 
+    moreThanZero(amountDscToMint)
+    nonReentrant
+{
+    s_dscMinted[msg.sender] += amountDscToMint;
+    // if minted too much, revert(e.g. $150 DSC, $100 collateral)
+    _revertIfHealthFactorIsBroken(msg.sender);
+    bool minted = i_dsc.mint(msg.sender, amountDscToMint);
+    if(!minted){
+        revert DSCEngine__MintFailed();
+    }
+}
+</code></pre>
+<p>这里有一层逻辑判断，要保证用户的HealthFactor是正常的，即确保用户没有仅存入一点质押物却铸造很多DSC的情况，本文中的HealthFactor是200%，即铸造$100 DSC至少需要$200 质押物。</p>
+<h4 id="_revertifhealthfactorisbroken">_revertIfHealthFactorIsBroken</h4>
+<p>在<code>mintDsc</code>中用到的函数</p>
+<pre><code class="language-solidity">function _revertIfHealthFactorIsBroken(address user) internal view {
+    uint256 userHealthFactor = _healthFactor(user);
+    if (userHealthFactor &lt; MIN_HEALTH_FACTOR) {
+        revert DSCEngine__BreaksHealthFactor(userHealthFactor);
+    }
+}
+</code></pre>
+<h4 id="_healthfactor">_healthFactor</h4>
+<p>在判断<code>healthFactor</code>时，对比用户的dsc和质押物的价值即可(200%)。这里设计小数计算，在solidity中需要注意一下。</p>
+<pre><code class="language-solidity">function _healthFactor(address user) private view returns (uint256) {
+    // total DSC minted
+    // total collateral deposited
+    (uint256 totalDscMinted, uint256 totalCollateralInUsd) = _getAccountInformation(user);
+    uint256 collateralAdjustedForThreshold = totalCollateralInUsd * LIQUIDATION_THRESHOLD / LIQUIDATION_PRECISION;
+    // 200% over-collateralized
+    return (collateralAdjustedForThreshold * PRECISON) / totalDscMinted;
+}
+</code></pre>
+<p>为了获得质押物的价值，我们要用上pricefeed。</p>
+<h4 id="pricefeed">priceFeed</h4>
+<p>省略了部分从healthfactor到pricefeed的逻辑，重点是使用了chainlink的<code>AggregatorV3</code>的接口，给出了某一token的pricefeed地址，调用<code>latestRoundData</code>来获取price。从chainlink返回的price是8位小数，也要注意小数计算。</p>
+<pre><code class="language-solidity">function getUsdValue(address token, uint256 amount) public view returns(uint256) {
+    AggregatorV3Interface priceFeed = AggregatorV3Interface(s_priceFeeds[token]);
+    ( , int price, , , ) = priceFeed.latestRoundData();
+    // 从chainlink返回的价格是8位小数
+    return uint256(price) * ADDITIONAL_FEED_PRECISION * amount / PRECISON;
+}
+</code></pre>
 
 
 
