@@ -535,19 +535,37 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-msgsenderdsc" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 存入质押物并给msg.sender铸造DSC(稳定币)
+      3.1 构造函数
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.1 存入质押物并给msg.sender铸造DSC(稳定币)">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-healthfactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 HealthFactor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-msgsenderdsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 存入质押物并给msg.sender铸造DSC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 存入质押物并给msg.sender铸造DSC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#311" class="md-nav__link">
+  <a href="#321" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1.1 存入质押物
+      3.2.1 存入质押物
     </span>
   </a>
   
@@ -767,19 +785,37 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-msgsenderdsc" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1 存入质押物并给msg.sender铸造DSC(稳定币)
+      3.1 构造函数
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3.1 存入质押物并给msg.sender铸造DSC(稳定币)">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-healthfactor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 HealthFactor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-msgsenderdsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 存入质押物并给msg.sender铸造DSC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 存入质押物并给msg.sender铸造DSC">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#311" class="md-nav__link">
+  <a href="#321" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1.1 存入质押物
+      3.2.1 存入质押物
     </span>
   </a>
   
@@ -819,7 +855,7 @@
 <p>项目中的稳定币是参考了DAI，1:1与美元挂钩的稳定币。用了liquidate的算法来保证1:1的稳定性。其中<strong>liquidate算法</strong>也是该项目中的重点，即当用户的质押物不足以维持其取出的stable coin的数量时(低于health factor)，则其他用户可以对该用户进行<strong>清算</strong>，即通过较便宜的价格购买低于health factor用户的质押物，以此来维持整个DeFi始终保持<strong>over-collateralized</strong>(质押物的价值 &gt; 已经铸造的稳定币的价值)。通过维持整个DeFi的over-collateralized的性质，来维持1:1的稳定性。liquidate函数会在后续展开介绍。</p>
 <h2 id="2-erc20">2 构建ERC20</h2>
 <p>代码：https://github.com/YukiJuda111/StableCoin/blob/main/src/DecentralizedStableCoin.sol</p>
-<p>用了openzepplin库来快速构建ERC20，稳定币主要功能是提供<code>mint</code>和<code>burn</code>接口，供<code>DscEngine</code>使用。</p>
+<p>用了openzepplin库来快速构建ERC20，稳定币主要功能是提供<code>mint</code>和<code>burn</code>接口，供<code>DscEngine</code>使用。后续称该ERC20 token为DSC。</p>
 <ul>
 <li><code>mint</code>: 在逻辑上负责铸造token，<code>_mint</code>调用负责将token从<code>0x0</code>发送到指定地址(user)</li>
 </ul>
@@ -850,8 +886,68 @@
 </code></pre></div>
 <h2 id="3-dscenginedefi">3 构建DscEngine(Defi)</h2>
 <p>代码：https://github.com/YukiJuda111/StableCoin/blob/main/src/DSCEngine.sol</p>
-<h3 id="31-msgsenderdsc">3.1 存入质押物并给msg.sender铸造DSC(稳定币)</h3>
-<h4 id="311">3.1.1 存入质押物</h4>
+<h3 id="31">3.1 构造函数</h3>
+<p>需要传入:</p>
+<ul>
+<li>作为质押物的token地址(weth和wbtc的地址)</li>
+<li>喂价地址: 用于换算质押物token和美元的汇率</li>
+<li>dsc地址(刚刚构建的ERC20的地址)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="p">[]</span><span class="w"> </span><span class="kt">memory</span><span class="w"> </span>tokenAddresses<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">[]</span><span class="w"> </span><span class="kt">memory</span><span class="w"> </span>priceFeedAddresses<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">dscAddress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>tokenAddresses<span class="p">.</span>length<span class="w"> </span><span class="o">!=</span><span class="w"> </span>priceFeedAddresses<span class="p">.</span>length<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__TokenAddressAndPriceFeedAddressMustBeEqualLength<span class="p">();</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span><span class="o">&lt;</span><span class="w"> </span>tokenAddresses<span class="p">.</span>length<span class="p">;</span><span class="w"> </span>i<span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span>s_priceFeeds<span class="p">[</span>tokenAddresses<span class="p">[</span>i<span class="p">]]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>priceFeedAddresses<span class="p">[</span>i<span class="p">];</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span>s_collateralTokens<span class="p">.</span>push<span class="p">(</span>tokenAddresses<span class="p">[</span>i<span class="p">]);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span>i_dsc<span class="w"> </span><span class="o">=</span><span class="w"> </span>DecentralizedStableCoin<span class="p">(</span>dscAddress<span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="32-healthfactor">3.2 HealthFactor</h3>
+<p>检测用户的health factor是整个稳定币DeFi能运作的核心。当用户的的health factor低于一定阈值时，我们就要让其他用户对其进行<strong>liquidate</strong>。</p>
+<p>health factor具体而言就是用户铸造的DSC和质押进去的token的比值，在这个合约中设定为1:2来满足整个Defi始终保持<strong>over-collateralized</strong>，例如质押$200价值的token则最多可以在defi中铸造$100价值的DSC。代码如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">_healthFactor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">user</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="c1">// total DSC minted</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="c1">// total collateral deposited</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalDscMinted</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalCollateralInUsd</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>_getAccountInformation<span class="p">(</span>user<span class="p">);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>totalDscMinted<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"> </span><span class="kt">return</span><span class="w"> </span>type<span class="p">(</span><span class="kt">uint256</span><span class="p">).</span>max<span class="p">;</span><span class="w"> </span><span class="c1">// wtf</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">collateralAdjustedForThreshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>totalCollateralInUsd<span class="w"> </span><span class="o">*</span><span class="w"> </span>LIQUIDATION_THRESHOLD<span class="w"> </span><span class="o">/</span><span class="w"> </span>LIQUIDATION_PRECISION<span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="c1">// 200% over-collateralized</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>collateralAdjustedForThreshold<span class="w"> </span><span class="o">*</span><span class="w"> </span>PRECISON<span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span>totalDscMinted<span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+</code></pre></div>
+<p>为了计算上面代码中的<code>totalCollateralInUsd</code>，需要使用chainlink的预言机:https://docs.chain.link/data-feeds/price-feeds/addresses?network=ethereum&amp;page=1</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">getUsdValue</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">token</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>AggregatorV3Interface<span class="w"> </span>priceFeed<span class="w"> </span><span class="o">=</span><span class="w"> </span>AggregatorV3Interface<span class="p">(</span>s_priceFeeds<span class="p">[</span>token<span class="p">]);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="p">(</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nv">price</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>priceFeed<span class="p">.</span>stablePriceCheck<span class="p">();</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="c1">// 从chainlink返回的价格是8位小数</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span><span class="kt">uint256</span><span class="p">(</span>price<span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>ADDITIONAL_FEED_PRECISION<span class="w"> </span><span class="o">*</span><span class="w"> </span>amount<span class="w"> </span><span class="o">/</span><span class="w"> </span>PRECISON<span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>还要注意<code>if (totalDscMinted == 0) return type(uint256).max;</code>。即用户只选择存入质押物不去铸造DSC这当然也是可行的，要特殊判断。这是通过后续<strong>fuzz test</strong>找到的bug，会在后面再次提到。</p>
+<h3 id="32-msgsenderdsc">3.2 存入质押物并给msg.sender铸造DSC</h3>
+<h4 id="321">3.2.1 存入质押物</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">/**</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="cm"> * @param tokenCollateral 作为抵押物的token的地址</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cm"> * @param amoutCollateral 抵押物的数量</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cm"> */</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kt">function</span><span class="w"> </span><span class="nv">depositCollateral</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">tokenCollateral</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amoutCollateral</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kt">public</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>moreThanZero<span class="p">(</span>amoutCollateral<span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span>isAllowedToken<span class="p">(</span>tokenCollateral<span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span>nonReentrant<span class="w"> </span><span class="c1">// 不可重入(more gas fee, safer)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span>s_collateralDeposited<span class="p">[</span><span class="k">msg.sender</span><span class="p">][</span>tokenCollateral<span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>amoutCollateral<span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span>emit<span class="w"> </span>CollateralDeposited<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span>tokenCollateral<span class="p">,</span><span class="w"> </span>amoutCollateral<span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IERC20<span class="p">(</span>tokenCollateral<span class="p">).</span>transferFrom<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">),</span><span class="w"> </span>amoutCollateral<span class="p">);</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span><span class="o">!</span>success<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__TransferFailed<span class="p">();</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span>_revertIfHealthFactorIsBroken<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="c1">// console.log(&quot;now balance: &quot;, IERC20(tokenCollateral).balanceOf(address(this)));</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span>
+</code></pre></div>
 
 
 
