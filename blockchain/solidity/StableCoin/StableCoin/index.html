@@ -659,6 +659,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-oracle-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Oracle Protection
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -987,6 +996,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#5-oracle-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Oracle Protection
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1306,6 +1324,33 @@
 <a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span>console<span class="p">.</span>log<span class="p">(</span><span class="s2">&quot;Total Wbtc Deposited: &quot;</span><span class="p">,</span><span class="w"> </span>totlWbtcDeposited<span class="p">);</span>
 <a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span>assert<span class="w"> </span><span class="p">(</span>wethValue<span class="w"> </span><span class="o">+</span><span class="w"> </span>wbtcValue<span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>totalSupply<span class="p">);</span>
 <a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="p">}</span>
+</code></pre></div>
+<p>同时我在这里也考虑了pricefeed价格波动给模型带来的影响，直观上来说，如果eth的价格跌幅过大，health factor自然是满足不了的，这也是这个Defi明确存在的风险，这一部分是过不了Invariant Test的。理论上来说，这个系统只有在 110% 以上 over-collateralized的情况下才能正常运行。因为只要在110%以上的over-collateralized，我们就可以激励其他用户去liquidate哪些under health的用户。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">// Known bug: 如果价格波动太大，会导致无法通过测试(要求:110% 以上 over-collateralization)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1">// function updateCollateralPrice(uint96 newPrice) public {</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1">//     int256 newPriceInt = int256(uint256(newPrice));</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">//     ethUsdPriceFeed.updateAnswer(newPriceInt);</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1">// } </span>
+</code></pre></div>
+<h2 id="5-oracle-protection">5 Oracle Protection</h2>
+<p>用了chainlink的预言机，这其实不是完成去中心化，如果chainlink的预言机失效了，这个Defi也会失效。我们需要在喂价一定时间不更新时抛出异常。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kt">library</span><span class="w"> </span>OracleLib<span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span>error<span class="w"> </span>OracleLib__StablePrice<span class="p">();</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">private </span><span class="nv">constant</span><span class="w"> </span>TIMEOUT<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="w"> </span>hours<span class="p">;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">stablePriceCheck</span><span class="p">(</span>AggregatorV3Interface<span class="w"> </span>priceFeed<span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">        </span><span class="kt">public</span><span class="w"> </span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span>view<span class="w"> </span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">        </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint80</span><span class="p">,</span><span class="w"> </span><span class="kt">int256</span><span class="p">,</span><span class="kt">uint256</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">,</span><span class="w"> </span><span class="kt">uint80</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">        </span><span class="p">(</span><span class="kt">uint80</span><span class="w"> </span><span class="nv">roundId</span><span class="p">,</span><span class="w"> </span><span class="kt">int256</span><span class="w"> </span><span class="nv">price</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">startedAt</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">updatedAt</span><span class="p">,</span><span class="w"> </span><span class="kt">uint80</span><span class="w"> </span><span class="nv">answeredInRound</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>priceFeed<span class="p">.</span>latestRoundData<span class="p">();</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">        </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">secondsSinceLastUpdate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">block.timestamp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>updatedAt<span class="p">;</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">        </span><span class="kt">if</span><span class="p">(</span>secondsSinceLastUpdate<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span>TIMEOUT<span class="p">){</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">            </span><span class="c1">// 如果超过1小时没有更新，冻结DscEngine</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">            </span>revert<span class="w"> </span>OracleLib__StablePrice<span class="p">();</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>roundId<span class="p">,</span><span class="w"> </span>price<span class="p">,</span><span class="w"> </span>startedAt<span class="p">,</span><span class="w"> </span>updatedAt<span class="p">,</span><span class="w"> </span>answeredInRound<span class="p">);</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="p">}</span>
 </code></pre></div>
 
 
