@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/StableCoin/dsc/">
+        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/StableCoin/StableCoin/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Dsc - Yuk1's note</title>
+        <title>类似于DAI的stable coin构建 - Yuk1's note</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#daistable-coin" class="md-skip">
           跳转至
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dsc
+              类似于DAI的stable coin构建
             
           </span>
         </div>
@@ -624,6 +624,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -632,21 +634,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      实现稳定币合约
+      1 稳定币概述
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="实现稳定币合约">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-erc20" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 构建ERC20
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dscenginedefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 构建DscEngine(Defi)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 构建DscEngine(Defi)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#erc20" class="md-nav__link">
+  <a href="#31-msgsenderdsc" class="md-nav__link">
     <span class="md-ellipsis">
-      ERC20稳定币
+      3.1 存入质押物并给msg.sender铸造DSC(稳定币)
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3.1 存入质押物并给msg.sender铸造DSC(稳定币)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.1 存入质押物
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -673,12 +708,13 @@
   
 
 
-  <h1>Dsc</h1>
-
-<h2 id="_1">实现稳定币合约</h2>
-<p>稳定币用了ERC20标准，采用了openzeppelin库来快速实现。</p>
-<h3 id="erc20">ERC20稳定币</h3>
-<p>提供<code>mint</code>和<code>burn</code>接口，供<code>DscEngine</code>使用</p>
+<h1 id="daistable-coin">类似于DAI的stable coin构建</h1>
+<p>记录了我构建类似于DAI的stable coin的全流程，参考了DAI的实现。</p>
+<h2 id="1">1 稳定币概述</h2>
+<p>项目中的稳定币是参考了DAI，1:1与美元挂钩的稳定币。用了liquidate的算法来保证1:1的稳定性。其中<strong>liquidate算法</strong>也是该项目中的重点，即当用户的质押物不足以维持其取出的stable coin的数量时(低于health factor)，则其他用户可以对该用户进行<strong>清算</strong>，即通过较便宜的价格购买低于health factor用户的质押物，以此来维持整个DeFi始终保持<strong>over-collateralized</strong>(质押物的价值 &gt; 已经铸造的稳定币的价值)。通过维持整个DeFi的over-collateralized的性质，来维持1:1的稳定性。liquidate函数会在后续展开介绍。</p>
+<h2 id="2-erc20">2 构建ERC20</h2>
+<p>代码：https://github.com/YukiJuda111/StableCoin/blob/main/src/DecentralizedStableCoin.sol</p>
+<p>用了openzepplin库来快速构建ERC20，稳定币主要功能是提供<code>mint</code>和<code>burn</code>接口，供<code>DscEngine</code>使用。</p>
 <ul>
 <li><code>mint</code>: 在逻辑上负责铸造token，<code>_mint</code>调用负责将token从<code>0x0</code>发送到指定地址(user)</li>
 </ul>
@@ -707,7 +743,10 @@
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="kt">return</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
 </code></pre></div>
-<p>1</p>
+<h2 id="3-dscenginedefi">3 构建DscEngine(Defi)</h2>
+<p>代码：https://github.com/YukiJuda111/StableCoin/blob/main/src/DSCEngine.sol</p>
+<h3 id="31-msgsenderdsc">3.1 存入质押物并给msg.sender铸造DSC(稳定币)</h3>
+<h4 id="311">3.1.1 存入质押物</h4>
 
 
 
