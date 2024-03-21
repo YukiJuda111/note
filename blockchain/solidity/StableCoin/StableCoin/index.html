@@ -1268,12 +1268,8 @@
 <p>在Invariant Test中，主要考虑了模型保持over-collateralized，即我们需要判断<strong>合约中存储的质押物的价值 &gt; minted DSC的价值</strong>，<code>assert (wethValue + wbtcValue &gt;= totalSupply);</code>。</p>
 <p>Foundry框架中的<code>StdInvariant</code>可以帮助我们进行Invariant Test:</p>
 <ol>
-<li>
-<p>先决定需要频繁调用的<code>DscEngine</code>的函数：</p>
-</li>
-<li>
-<p>depositCollateral</p>
-</li>
+<li>先决定需要频繁调用的<code>DscEngine</code>的函数：</li>
+<li>depositCollateral</li>
 <li>mintDsc</li>
 <li>
 <p>redeemCollateral</p>
