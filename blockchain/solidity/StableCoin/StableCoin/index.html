@@ -1267,15 +1267,8 @@
 <p>Invariant Test代码也在repo中<a href="https://github.com/YukiJuda111/StableCoin/blob/main/test/fuzz/InvariantsTest.t.sol">invariant test</a></p>
 <p>在Invariant Test中，主要考虑了模型保持over-collateralized，即我们需要判断<strong>合约中存储的质押物的价值 &gt; minted DSC的价值</strong>，<code>assert (wethValue + wbtcValue &gt;= totalSupply);</code>。</p>
 <p>Foundry框架中的<code>StdInvariant</code>可以帮助我们进行Invariant Test:</p>
-<ol>
-<li>先决定需要频繁调用的<code>DscEngine</code>的函数： <br />
-   depositCollateral</li>
-</ol>
-<p>mintDsc</p>
-<p>redeemCollateral</p>
-<ol>
-<li>设计策略让上面三个函数调用的token地址从<code>weth</code>和<code>wbtc</code>地址中选择</li>
-</ol>
+<p>1.先决定需要频繁调用的<code>DscEngine</code>的函数：<code>depositCollateral</code>, <code>mintDsc</code>, <code>redeemCollateral</code></p>
+<p>2.设计策略让上面三个函数调用的token地址从<code>weth</code>和<code>wbtc</code>地址中选择</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">_getCollateralFromSeed</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">collateralSeed</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="p">(</span>ERC20Mock<span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span>collateralSeed<span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">){</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>weth<span class="p">;</span>
@@ -1284,9 +1277,7 @@
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>记录每次调用depositCollateral时由Invariant Test 产生的<code>msg.sender</code>的地址，这样做的目的是保证随机产生的mintDsc的sender已经质押过一定数量的weth/wbtc</li>
-</ol>
+<p>3.记录每次调用depositCollateral时由Invariant Test 产生的<code>msg.sender</code>的地址，这样做的目的是保证随机产生的mintDsc的sender已经质押过一定数量的weth/wbtc</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">depositCollateral</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">collateralSeed</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountCollateral</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">     </span><span class="p">...</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="c1">// 可能有用户重复push</span>
@@ -1301,9 +1292,7 @@
 <a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">     </span><span class="p">...</span>
 <a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">}</span>
 </code></pre></div>
-<ol>
-<li>Do Invariant Test !!!</li>
-</ol>
+<p>4.Do Invariant Test !!!</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">invariant_protocolMustHaveMoreValueThanTotalSupply</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalSupply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dsc<span class="p">.</span>totalSupply<span class="p">();</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalWethDeposited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IERC20<span class="p">(</span>weth<span class="p">).</span>balanceOf<span class="p">(</span><span class="kt">address</span><span class="p">(</span>dscEngine<span class="p">));</span>
