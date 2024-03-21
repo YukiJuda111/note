@@ -1025,6 +1025,7 @@
 
 <h1 id="daistable-coin">类似于DAI的stable coin构建</h1>
 <p>记录了我构建类似于DAI的stable coin的全流程。</p>
+<p><strong>REPO</strong> : <a href="https://github.com/YukiJuda111/StableCoin/tree/main">Github REPO</a></p>
 <h2 id="1">1 稳定币概述</h2>
 <p>项目中的稳定币是参考了DAI，1:1与美元挂钩的稳定币。用了liquidate的算法来保证1:1的稳定性。其中<strong>liquidate算法</strong>也是该项目中的重点，即当用户的质押物不足以维持其取出的stable coin的数量时(低于health factor)，则其他用户可以对该用户进行<strong>清算</strong>，即通过较便宜的价格购买低于health factor用户的质押物，以此来维持整个DeFi始终保持<strong>over-collateralized</strong>(质押物的价值 &gt; 已经铸造的稳定币的价值)。通过维持整个DeFi的over-collateralized的性质，来维持1:1的稳定性。liquidate函数会在后续展开介绍。</p>
 <h2 id="2-erc20">2 构建ERC20</h2>
