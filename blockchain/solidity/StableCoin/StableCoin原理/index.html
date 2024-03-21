@@ -10,25 +10,21 @@
       
       
       
-        <link rel="canonical" href="https://yukijuda111.github.io/note/SE/chapter6/">
+        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/StableCoin/StableCoin%E5%8E%9F%E7%90%86/">
       
       
-        <link rel="prev" href="../../blockchain/solidity/StableCoin/">
       
       
-        <link rel="next" href="../chapter7/">
-      
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
-        <title>Chapter6 - Yuk1's note</title>
+        <title>StableCoin Defi复盘 - Yuk1's note</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e359304.min.css">
       
       
 
@@ -47,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#stablecoin-defi" class="md-skip">
           跳转至
         </a>
       
@@ -82,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="Yuk1&#39;s note" class="md-header__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
+    <a href="../../../.." title="Yuk1&#39;s note" class="md-header__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -102,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter6
+              StableCoin Defi复盘
             
           </span>
         </div>
@@ -189,7 +185,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Yuk1&#39;s note" class="md-nav__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
+    <a href="../../../.." title="Yuk1&#39;s note" class="md-nav__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -309,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blockchain/course/lesson1/principle/" class="md-nav__link">
+      <a href="../../../course/lesson1/principle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -373,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blockchain/solidity/raffle/" class="md-nav__link">
+      <a href="../../raffle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -394,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blockchain/solidity/ERC-20/" class="md-nav__link">
+      <a href="../../ERC-20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -415,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blockchain/solidity/NFT/NFT/" class="md-nav__link">
+      <a href="../../NFT/NFT/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -436,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blockchain/solidity/EVM/" class="md-nav__link">
+      <a href="../../EVM/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -457,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blockchain/solidity/StableCoin/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -490,19 +486,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -516,7 +510,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             SE
@@ -527,28 +521,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Chapter6
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../SE/chapter6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -557,132 +533,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      1
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 软件工程心理学
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 有效的软件团队特征
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4 组织行为学
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5 决定范式
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      6 敏捷团队
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-xp-team" class="md-nav__link">
-    <span class="md-ellipsis">
-      7 XP Team极限编程团队
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
-    <span class="md-ellipsis">
-      8 团队沟通手段
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      9 Cloud
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-cde" class="md-nav__link">
-    <span class="md-ellipsis">
-      10 协同开发环境CDE
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    <span class="md-ellipsis">
-      11 全球化公司
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      12 图
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -695,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter7/" class="md-nav__link">
+      <a href="../../../../SE/chapter7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -716,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter31/" class="md-nav__link">
+      <a href="../../../../SE/chapter31/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -744,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about/" class="md-nav__link">
+      <a href="../../../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -774,6 +624,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -782,110 +634,62 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      1
+      StableCoin分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="StableCoin分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pegged-stablecoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      pegged stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#floating-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      2 软件工程心理学
+      floating stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      3 有效的软件团队特征
+      algorithmic stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#governed-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      4 组织行为学
+      governed stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#collateralized-stablecoin" class="md-nav__link">
     <span class="md-ellipsis">
-      5 决定范式
+      collateralized stablecoin
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
-    <span class="md-ellipsis">
-      6 敏捷团队
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-xp-team" class="md-nav__link">
-    <span class="md-ellipsis">
-      7 XP Team极限编程团队
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
-    <span class="md-ellipsis">
-      8 团队沟通手段
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-cloud" class="md-nav__link">
-    <span class="md-ellipsis">
-      9 Cloud
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-cde" class="md-nav__link">
-    <span class="md-ellipsis">
-      10 协同开发环境CDE
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    <span class="md-ellipsis">
-      11 全球化公司
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      12 图
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -907,140 +711,30 @@
   
 
 
-  <h1>Chapter6</h1>
-
-<h3 id="1">1</h3>
+<h1 id="stablecoin-defi">StableCoin Defi复盘</h1>
+<h2 id="stablecoin">StableCoin分类</h2>
+<h3 id="pegged-stablecoin">pegged stablecoin</h3>
 <ul>
-<li>
-<p>责任心：eg.老板告诉你80%，要完成剩下的20%。不能只完成70%，被催促</p>
-</li>
-<li>
-<p>敏锐意识：清楚客户需求</p>
-</li>
-<li>
-<p>用于承认错误：坦诚地面对问题，有自己的看法，提出建设性意见</p>
-</li>
-<li>
-<p>抗压：eg.阿里996</p>
-</li>
-<li>
-<p>公正：不能故意偏袒某人</p>
-</li>
-<li>
-<p>关注细度：细节决定成败。eg.奔驰细节做得到</p>
-</li>
-<li>
-<p>实在：求实创新，不能好高骛远</p>
-</li>
+<li>A pegged stablecoin is a stablecoin that is pegged to a specific value, such as the US dollar.</li>
+<li>The value of a pegged stablecoin is maintained by a central authority, which holds reserves of the asset that the stablecoin is pegged to. Example: USDT, USDC</li>
 </ul>
-<h3 id="2">2 软件工程心理学</h3>
+<h3 id="floating-stablecoin">floating stablecoin</h3>
 <ul>
-<li>
-<p>商业环境：组织化行为进行管理</p>
-</li>
-<li>
-<p>企业</p>
-</li>
-<li>
-<p>项目</p>
-</li>
-<li>
-<p>团队：团队能动性，超额完成任务</p>
-</li>
-<li>
-<p>个人：比较强的认知能力</p>
-</li>
+<li>A floating stablecoin is a stablecoin that is not pegged to a specific value.</li>
+<li>The value of a floating stablecoin is determined by the market, and can fluctuate based on supply and demand. </li>
 </ul>
-<p>不同team的跨界沟通角色：</p>
-<p>外联：和其他部门做沟通 侦察：其他团队做的怎么样 守护：不能透露信息 协调：代表团队和其他团队谈判</p>
-<h3 id="3">3 有效的软件团队特征</h3>
+<h3 id="algorithmic-stablecoin">algorithmic stablecoin</h3>
 <ul>
-<li>目标意识</li>
-<li>投入意识</li>
-<li>参与意识：不要事不关己</li>
-<li>信任意识：相信队友</li>
-<li>积极意识：要积极向上</li>
-<li>技能相互补充：前端，中台，后台，系统安全...各方面</li>
+<li>An algorithmic stablecoin is a stablecoin that uses an algorithm to maintain its value.</li>
 </ul>
-<p>避免团队毒药：</p>
+<h3 id="governed-stablecoin">governed stablecoin</h3>
 <ul>
-<li>目标混乱：产品，策略，市场，技术，商业模式都要清楚</li>
-<li>矛盾重重：因为没有协调员。eg.工资低，但是团队氛围好，大家愿意待</li>
-<li>管理不善：沟通不明，要揪出滥竽充数的人</li>
-<li>分工不明：闲的闲死，忙的忙死，不能欺负老实人。闲的人事不关己不行</li>
-<li>连续失败：单子没人要，要自己去找单子。团建工作很重要，打鸡血</li>
+<li>A governed stablecoin is a stablecoin that is governed by a decentralized community of stakeholders.</li>
 </ul>
-<h3 id="4">4 组织行为学</h3>
-<p>目的：提高整个组织的效率</p>
+<h3 id="collateralized-stablecoin">collateralized stablecoin</h3>
 <ul>
-<li>closed：leader，项目经理，模块经理一层层下去(eg.中国，执行力强)</li>
-<li>random：比较松散(eg.意大利，有利于创新，效率不高)</li>
-<li>Open：两种结合，混合型架构，兼顾两者优缺点(看人数决定范式)</li>
-<li>同步：按问题自然分解划分团队，然后组织在一起</li>
+<li>The deposit of collateral is always greater than the minted stable coin</li>
 </ul>
-<h3 id="5">5 决定范式</h3>
-<p>按照问题特征来选择范式，问题难，random创新。</p>
-<p>规模大，closed管理</p>
-<p>团队时间，在一起相对时间长，自由一点。</p>
-<p>模块化程度越高，自由点。</p>
-<p>可靠性要求高，closed</p>
-<p>ddl紧迫，closed</p>
-<p>通讯要求高，closed</p>
-<h3 id="6">6 敏捷团队</h3>
-<ul>
-<li>个人能力和团队协作一样重要</li>
-<li>人比过程重要，策略比人重要</li>
-<li>自组织：适应问题，不同问题选用不同的人</li>
-<li>计划尽量小，不要过度计划</li>
-</ul>
-<h3 id="7-xp-team">7 XP Team极限编程团队</h3>
-<ul>
-<li>沟通：有什么事情及时沟通。每天花十分钟开会：1.昨天干啥 2.有啥问题 3.今天干啥</li>
-<li>简单化：活在当下</li>
-<li>反馈：老版本有什么问题，再进行迭代</li>
-<li>勇气：对自己要有信心，坚持自己的项目</li>
-<li>尊重：团队成员之间相互尊重，相互认可</li>
-</ul>
-<h3 id="8">8 团队沟通手段</h3>
-<ul>
-<li>博客：团队鼓励做技术博客，有经验的人做技术博客，方便新来的</li>
-<li>微博</li>
-<li>在线论坛</li>
-<li>社交网络：散步信息，沟通的群</li>
-<li>book marking：朋友圈</li>
-</ul>
-<h3 id="9-cloud">9 Cloud</h3>
-<p>好处：</p>
-<ul>
-<li>共享方便</li>
-<li>随时随地交流</li>
-<li>测试，安装运行方便</li>
-<li>用户也可以方便使用软件</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>可靠性安全性问题：eg.阿里云挂掉，很多系统都会出问题。内部资料容易被攻破</li>
-<li>操作复杂</li>
-<li>网络可靠性问题：网络不稳定</li>
-</ul>
-<h3 id="10-cde">10 协同开发环境CDE</h3>
-<ul>
-<li>namespace：公共空间</li>
-<li>日历：每天干了啥</li>
-<li>模版：标准化，自动创建模版</li>
-<li>量化评估每个成员的贡献</li>
-<li>交流过程跟踪</li>
-<li>对产出聚类</li>
-</ul>
-<h3 id="11">11 全球化公司</h3>
-<ul>
-<li>问题更加复杂，分散在世界各地</li>
-<li>决策不确定性，风险更加大</li>
-<li>对问题不同的看法导致不同的方向</li>
-</ul>
-<h3 id="12">12 图</h3>
-<p>距离产生障碍，导致沟通问题，协调问题</p>
-<p>因此要加强沟通，使得更好协同</p>
 
 
 
@@ -1091,10 +785,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>

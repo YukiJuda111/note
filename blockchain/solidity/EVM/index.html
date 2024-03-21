@@ -16,7 +16,7 @@
         <link rel="prev" href="../NFT/NFT/">
       
       
-        <link rel="next" href="../StableCoin/StableCoin/">
+        <link rel="next" href="../StableCoin/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -525,7 +525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../StableCoin/StableCoin/" class="md-nav__link">
+      <a href="../StableCoin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -750,60 +750,60 @@
 <h1 id="evm-overview">EVM overview</h1>
 <p>contract.sol -&gt; solc compiler -&gt; contract.bin &amp; contract.abi 
 EVM负责编译合约.sol文件，生成二进制文件.bin和接口文件.abi</p>
-<pre><code>Transactions:
-    - Nonce: tx count for the account
-    - GasPrice: the price of gas
-    - GasLimit: the maximum amount of gas
-    - To: the address of the recipient
-    - Value: the amount of ether to send
-    - Data: what to send to address
-    - v, r, s: the signature of the transaction
-</code></pre>
-<pre><code>Contract Deployment:
-    - To: empty
-    - Data: contract init code + contract bytecode
-</code></pre>
-<pre><code>Function Call:
-    - To: address that the tx is sent to
-    - Data: what to send to the To address
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Transactions:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    - Nonce: tx count for the account
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    - GasPrice: the price of gas
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    - GasLimit: the maximum amount of gas
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    - To: the address of the recipient
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    - Value: the amount of ether to send
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    - Data: what to send to address
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    - v, r, s: the signature of the transaction
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Contract Deployment:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    - To: empty
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    - Data: contract init code + contract bytecode
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Function Call:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    - To: address that the tx is sent to
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    - Data: what to send to the To address
+</code></pre></div></p>
 <h2 id="data-field-of-callfunction-callencode">通过data field of call实现function call需要encode：</h2>
 <ul>
 <li>function selector</li>
 <li>parameters</li>
 </ul>
 <h3 id="function-selector">function selector</h3>
-<p>The "function selector" is the first 4 bytes of the keccak256 hash of the function signature. The "function signature" is a string that defines the function name &amp; parameters.</p>
-<pre><code>// example of function signature:
-&quot;transfer(address,uint256)&quot;
-// example of function selector:
-0xa9059cbb(encode the function signature and take the first 4 bytes)
-</code></pre>
-<pre><code class="language-solidity">// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18;
-
-contract CallAnything {
-    address public s_someAddr;
-    uint256 public s_amount;
-    function transfer(address someAddr, uint256 amount) public {
-        s_someAddr = someAddr;
-        s_amount = amount;
-    }
-
-    function getSelectorOne() public  pure returns (bytes4 selector) {
-        return bytes4(keccak256(bytes(&quot;transfer(address,uint256)&quot;)));
-    }
-
-    function getDataToCallTransfer(address someAddr, uint256 amount) public pure returns (bytes memory) {
-        return abi.encodeWithSelector(getSelectorOne(), someAddr, amount);
-    }
-
-    function callTransferFunctionWithBinary(address someAddr, uint256 amount) public returns(bytes4,bool){
-        (bool success,bytes memory returnData) = address(this).call(getDataToCallTransfer(someAddr, amount));
-        return (bytes4(returnData), success);
-    }
-}
-</code></pre>
+<p>The "function selector" is the first 4 bytes of the keccak256 hash of the function signature. The "function signature" is a string that defines the function name &amp; parameters.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>// example of function signature:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>&quot;transfer(address,uint256)&quot;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>// example of function selector:
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>0xa9059cbb(encode the function signature and take the first 4 bytes)
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.8.18</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">contract</span><span class="w"> </span><span class="ni">CallAnything</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">s_someAddr</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">public </span><span class="nv">s_amount</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">transfer</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">someAddr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span>s_someAddr<span class="w"> </span><span class="o">=</span><span class="w"> </span>someAddr<span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span>s_amount<span class="w"> </span><span class="o">=</span><span class="w"> </span>amount<span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getSelectorOne</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w">  </span>pure<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span>bytes4<span class="w"> </span>selector<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>bytes4<span class="p">(</span><span class="nb">keccak256</span><span class="p">(</span><span class="kt">bytes</span><span class="p">(</span><span class="s2">&quot;transfer(address,uint256)&quot;</span><span class="p">)));</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getDataToCallTransfer</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">someAddr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>pure<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>abi<span class="p">.</span>encodeWithSelector<span class="p">(</span>getSelectorOne<span class="p">(),</span><span class="w"> </span>someAddr<span class="p">,</span><span class="w"> </span>amount<span class="p">);</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">callTransferFunctionWithBinary</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">someAddr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span>bytes4<span class="p">,</span><span class="kt">bool</span><span class="p">){</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="p">,</span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>returnData<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">).</span>call<span class="p">(</span>getDataToCallTransfer<span class="p">(</span>someAddr<span class="p">,</span><span class="w"> </span>amount<span class="p">));</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>bytes4<span class="p">(</span>returnData<span class="p">),</span><span class="w"> </span>success<span class="p">);</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">}</span>
+</code></pre></div>
 
 
 
