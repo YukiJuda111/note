@@ -571,13 +571,91 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#322-mint-dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.2 mint DSC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 整合逻辑
+    </span>
+  </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 取回质押物并销毁DSC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 取回质押物并销毁DSC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.1 取回质押物
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.2 销毁DSC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.3 整合逻辑
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 清算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-invariant-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Invariant Test
+    </span>
+  </a>
   
 </li>
       
@@ -821,13 +899,91 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#322-mint-dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.2 mint DSC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.3 整合逻辑
+    </span>
+  </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 取回质押物并销毁DSC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 取回质押物并销毁DSC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.1 取回质押物
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-dsc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.2 销毁DSC
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.3 整合逻辑
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 清算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-invariant-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Invariant Test
+    </span>
+  </a>
   
 </li>
       
@@ -850,7 +1006,7 @@
 
 
 <h1 id="daistable-coin">类似于DAI的stable coin构建</h1>
-<p>记录了我构建类似于DAI的stable coin的全流程，参考了DAI的实现。</p>
+<p>记录了我构建类似于DAI的stable coin的全流程。</p>
 <h2 id="1">1 稳定币概述</h2>
 <p>项目中的稳定币是参考了DAI，1:1与美元挂钩的稳定币。用了liquidate的算法来保证1:1的稳定性。其中<strong>liquidate算法</strong>也是该项目中的重点，即当用户的质押物不足以维持其取出的stable coin的数量时(低于health factor)，则其他用户可以对该用户进行<strong>清算</strong>，即通过较便宜的价格购买低于health factor用户的质押物，以此来维持整个DeFi始终保持<strong>over-collateralized</strong>(质押物的价值 &gt; 已经铸造的稳定币的价值)。通过维持整个DeFi的over-collateralized的性质，来维持1:1的稳定性。liquidate函数会在后续展开介绍。</p>
 <h2 id="2-erc20">2 构建ERC20</h2>
@@ -886,6 +1042,12 @@
 </code></pre></div>
 <h2 id="3-dscenginedefi">3 构建DscEngine(Defi)</h2>
 <p>代码：https://github.com/YukiJuda111/StableCoin/blob/main/src/DSCEngine.sol</p>
+<p>为了实现DscEngine，要实现以下核心功能:</p>
+<ul>
+<li>质押token，并根据质押物的价值铸造DSC</li>
+<li>取回质押的token，并销毁相应的DSC</li>
+<li>清算<strong>liquidate</strong>，以此来维持整个Defi的正常运作</li>
+</ul>
 <h3 id="31">3.1 构造函数</h3>
 <p>需要传入:</p>
 <ul>
@@ -928,6 +1090,7 @@
 <p>还要注意<code>if (totalDscMinted == 0) return type(uint256).max;</code>。即用户只选择存入质押物不去铸造DSC这当然也是可行的，要特殊判断。这是通过后续<strong>fuzz test</strong>找到的bug，会在后面再次提到。</p>
 <h3 id="32-msgsenderdsc">3.2 存入质押物并给msg.sender铸造DSC</h3>
 <h4 id="321">3.2.1 存入质押物</h4>
+<p>逻辑比较简单，不赘述。有一行<code>_revertIfHealthFactorIsBroken(msg.sender);</code>即检测用户的health factor，按理来说存入质押物只会让用户的health factor更健康，可能是不必要的，删了会更省gas fee。但出于安全性考虑还是添加。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">/**</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="cm"> * @param tokenCollateral 作为抵押物的token的地址</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cm"> * @param amoutCollateral 抵押物的数量</span>
@@ -947,6 +1110,202 @@
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span>_revertIfHealthFactorIsBroken<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span>
 <a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="c1">// console.log(&quot;now balance: &quot;, IERC20(tokenCollateral).balanceOf(address(this)));</span>
 <a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="322-mint-dsc">3.2.2 mint DSC</h4>
+<p>也是注意检查health factor即可。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">/**</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cm"> * @param amountDscToMint 铸造的DSC数量</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="cm"> * @notice collateralization value &gt; minted DSC value</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cm"> */</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kt">function</span><span class="w"> </span><span class="nv">mintDsc</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountDscToMint</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="kt">public</span><span class="w"> </span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span>moreThanZero<span class="p">(</span>amountDscToMint<span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span>nonReentrant
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">{</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span>s_dscMinted<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>amountDscToMint<span class="p">;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="c1">// if minted too much, revert(e.g. $150 DSC, $100 collateral)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span>_revertIfHealthFactorIsBroken<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nv">minted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>i_dsc<span class="p">.</span>mint<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span>amountDscToMint<span class="p">);</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span><span class="o">!</span>minted<span class="p">){</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__MintFailed<span class="p">();</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="323">3.2.3 整合逻辑</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cm">/**</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="cm"> * @param tokenCollateralAddress 要存的token的地址</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="cm"> * @param amountCollateral 要存的token数量</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="cm"> * @param amountDscToMint 铸造DSC的数量</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="cm"> */</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kt">function</span><span class="w"> </span><span class="nv">depositCollateralAndMintDsc</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">(</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">tokenCollateralAddress</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountCollateral</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountDscToMint</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span>depositCollateral<span class="p">(</span>tokenCollateralAddress<span class="p">,</span><span class="w"> </span>amountCollateral<span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span>mintDsc<span class="p">(</span>amountDscToMint<span class="p">);</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="33-dsc">3.3 取回质押物并销毁DSC</h3>
+<h4 id="331">3.3.1 取回质押物</h4>
+<p>这里同样需要关注health factor。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">//取回质押物，需要health factor &gt; 1</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kt">function</span><span class="w"> </span><span class="nv">redeemCollateral</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">tokenCollateralAddress</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountCollateral</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="kt">public</span><span class="w"> </span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span>moreThanZero<span class="p">(</span>amountCollateral<span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span>isAllowedToken<span class="p">(</span>tokenCollateralAddress<span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span>nonReentrant
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span>_redeemCollateral<span class="p">(</span>tokenCollateralAddress<span class="p">,</span><span class="w"> </span>amountCollateral<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span>_revertIfHealthFactorIsBroken<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">_redeemCollateral</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">tokenCollateralAddress</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountCollateral</span><span class="p">,</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kt">address</span><span class="w"> </span><span class="nv">from</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">to</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>s_collateralDeposited<span class="p">[</span>from<span class="p">][</span>tokenCollateralAddress<span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span>amountCollateral<span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>emit<span class="w"> </span>CollateralRedeemed<span class="p">(</span>from<span class="p">,</span><span class="w"> </span>to<span class="p">,</span><span class="w"> </span>amountCollateral<span class="p">,</span><span class="w"> </span>tokenCollateralAddress<span class="p">);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IERC20<span class="p">(</span>tokenCollateralAddress<span class="p">).</span>transfer<span class="p">(</span>to<span class="p">,</span><span class="w"> </span>amountCollateral<span class="p">);</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span><span class="o">!</span>success<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__TransferFailed<span class="p">();</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="332-dsc">3.3.2 销毁DSC</h4>
+<p>考虑到销毁DSC只会让health factor更健康，因此check health factor这一步也可能是非必要的。出于安全考虑还是加上。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">burnDsc</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountDscToBurn</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kt">public</span><span class="w"> </span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span>moreThanZero<span class="p">(</span>amountDscToBurn<span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span>_burnDsc<span class="p">(</span>amountDscToBurn<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span>_revertIfHealthFactorIsBroken<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span><span class="w"> </span><span class="c1">// I dont think this is necessary</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">_burnDsc</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountDscToBurn</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">onBehalfOf</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">dscFrom</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span>s_dscMinted<span class="p">[</span>onBehalfOf<span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span>amountDscToBurn<span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>i_dsc<span class="p">.</span>transferFrom<span class="p">(</span>dscFrom<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">),</span><span class="w"> </span>amountDscToBurn<span class="p">);</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span><span class="o">!</span>success<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__TransferFailed<span class="p">();</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span>i_dsc<span class="p">.</span>burn<span class="p">(</span>amountDscToBurn<span class="p">);</span><span class="w"> </span><span class="c1">// only owner can burn</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="333">3.3.3 整合逻辑</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cm">/**</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="cm"> * @param tokenCollateralAddress 质押物的地址</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="cm"> * @param amountCollateral 质押物的数量</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="cm"> * @param amountDscToBurn 销毁的DSC数量</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="cm"> */</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="kt">function</span><span class="w"> </span><span class="nv">redeemCollateralForDsc</span><span class="p">(</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">tokenCollateralAddress</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountCollateral</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountDscToBurn</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span>burnDsc<span class="p">(</span>amountDscToBurn<span class="p">);</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span>redeemCollateral<span class="p">(</span>tokenCollateralAddress<span class="p">,</span><span class="w"> </span>amountCollateral<span class="p">);</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="34">3.4 清算</h3>
+<p>先看整个代码，大致逻辑就是under-collateralized的用户会被其他用户清算，其他用户通过自己支付一定数额的DSC来销毁被清算用户的DSC，并获得被清算用户的质押物(会有10%的bonus来驱动他们清算)。</p>
+<p>这样做的目的是保持整个Defi是<strong>over-collateralized</strong>的(合约中存储的质押物的价值 &gt; minted DSC的价值)。比如被清算用户质押了$200的eth来获得$100的DSC，但是过段时间他质押的eth贬值到了$180，这时根据health factor的计算，他已经under-collateralized了，其他用户可以清算。可以看到整个系统目前有$10的under-collateralized需要恢复，那么其他用户支付了$10的DSC,就可以获得对应价值$10*1.1的eth，并销毁了被清算用户$10的DSC，此时被清算用户又回到了健康状态(质押$180的eth，还有$90的DSC未被销毁)。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// 检测某人是否under-collateralized，如果是，就以打折的形式liquidate</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="cm">/**</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="cm"> * </span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="cm"> * @param collateral erc20 token address</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="cm"> * @param user under-collateralized user(health factor &lt; 1)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="cm"> * @param debtToCover The amount of DSC you want to burn to improve the user&#39;s health factor</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="cm"> * @notice 必备条件: over-collateralized(合约中存储的质押物的价值 &gt; minted DSC的价值)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="cm"> */</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="kt">function</span><span class="w"> </span><span class="nv">liquidate</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">collateral</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">user</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">debtToCover</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="kt">external</span><span class="w"> </span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span>moreThanZero<span class="p">(</span>debtToCover<span class="p">)</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span>isAllowedToken<span class="p">(</span>collateral<span class="p">)</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span>nonReentrant
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="p">{</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">startingUserHealthFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>_healthFactor<span class="p">(</span>user<span class="p">);</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span>startingUserHealthFactor<span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>MIN_HEALTH_FACTOR<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__HealthFactorFine<span class="p">();</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">    </span><span class="c1">// 拿走质押物</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">tokenAmountFromDebtCovered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>getTokenAmountFromUsd<span class="p">(</span>collateral<span class="p">,</span><span class="w"> </span>debtToCover<span class="p">);</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="c1">// 给liquidator 10% bonus</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">bonusCollateral</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>tokenAmountFromDebtCovered<span class="w"> </span><span class="o">*</span><span class="w"> </span>LIQUIDATION_BONUS<span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span>LIQUIDATION_PRECISION<span class="p">;</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalCollateralToRedeem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>tokenAmountFromDebtCovered<span class="w"> </span><span class="o">+</span><span class="w"> </span>bonusCollateral<span class="p">;</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">    </span>_redeemCollateral<span class="p">(</span>collateral<span class="p">,</span><span class="w"> </span>totalCollateralToRedeem<span class="p">,</span><span class="w"> </span>user<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="w">    </span><span class="c1">// 销毁DSC,msg.sender支付,user的DSC被销毁</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">    </span>_burnDsc<span class="p">(</span>debtToCover<span class="p">,</span><span class="w"> </span>user<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">endingUserHealthFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>_healthFactor<span class="p">(</span>user<span class="p">);</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span>endingUserHealthFactor<span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span>startingUserHealthFactor<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">        </span>revert<span class="w"> </span>DSCEngine__HealthFactorNotImproved<span class="p">();</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="w">    </span>_revertIfHealthFactorIsBroken<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="p">}</span>
+</code></pre></div>
+<p>这里其实是一个比较复杂的模型，我们不能保证这个模型能够始终保持over-collateralized，作为一个Defi需要通过安全审计。这里简单做了<strong>Invariant测试</strong>，保证模型始终有<strong>合约中存储的质押物的价值 &gt; minted DSC的价值</strong>。</p>
+<h2 id="4-invariant-test">4 Invariant Test</h2>
+<p>在进行Invariant Test之前要先进行unit test和integration test，这项目只写了部分unit test，在github repo中有相关代码https://github.com/YukiJuda111/StableCoin/blob/main/test/unit/DSCEngineTest.t.sol</p>
+<p>Invariant Test代码也在repo中https://github.com/YukiJuda111/StableCoin/blob/main/test/fuzz/InvariantsTest.t.sol</p>
+<p>在Invariant Test中，主要考虑了模型保持over-collateralized，即我们需要判断<strong>合约中存储的质押物的价值 &gt; minted DSC的价值</strong>，<code>assert (wethValue + wbtcValue &gt;= totalSupply);</code>。</p>
+<p>Foundry框架中的<code>StdInvariant</code>可以帮助我们进行Invariant Test:</p>
+<ol>
+<li>
+<p>先决定需要频繁调用的<code>DscEngine</code>的函数：</p>
+</li>
+<li>
+<p>depositCollateral</p>
+</li>
+<li>mintDsc</li>
+<li>
+<p>redeemCollateral</p>
+</li>
+<li>
+<p>设计策略让上面三个函数调用的token地址从<code>weth</code>和<code>wbtc</code>地址中选择</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">_getCollateralFromSeed</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">collateralSeed</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="p">(</span>ERC20Mock<span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span>collateralSeed<span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="m m-Decimal">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">){</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>weth<span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="kt">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>wbtc<span class="p">;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>记录每次调用depositCollateral时由Invariant Test 产生的<code>msg.sender</code>的地址，这样做的目的是保证随机产生的mintDsc的sender已经质押过一定数量的weth/wbtc</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">depositCollateral</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">collateralSeed</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amountCollateral</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">     </span><span class="p">...</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="c1">// 可能有用户重复push</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span>usersWithCollateralDeposited<span class="p">.</span>push<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">mintDsc</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">addressSeed</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kt">if</span><span class="p">(</span>usersWithCollateralDeposited<span class="p">.</span>length<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">){</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="kt">return</span><span class="p">;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>usersWithCollateralDeposited<span class="p">[</span>addressSeed<span class="w"> </span><span class="o">%</span><span class="w"> </span>usersWithCollateralDeposited<span class="p">.</span>length<span class="p">];</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">     </span><span class="p">...</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Do Invariant Test !!!</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kt">function</span><span class="w"> </span><span class="nv">invariant_protocolMustHaveMoreValueThanTotalSupply</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalSupply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dsc<span class="p">.</span>totalSupply<span class="p">();</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totalWethDeposited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IERC20<span class="p">(</span>weth<span class="p">).</span>balanceOf<span class="p">(</span><span class="kt">address</span><span class="p">(</span>dscEngine<span class="p">));</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">totlWbtcDeposited</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>IERC20<span class="p">(</span>wbtc<span class="p">).</span>balanceOf<span class="p">(</span><span class="kt">address</span><span class="p">(</span>dscEngine<span class="p">));</span><span class="w"> </span><span class="c1">// fix bug</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="c1">// console.log(&quot;Deposited weth: &quot;, totalWethDeposited);</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="c1">// console.log(&quot;Deposited wbtc: &quot;, totlWbtcDeposited);</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">wethValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dscEngine<span class="p">.</span>getUsdValue<span class="p">(</span>weth<span class="p">,</span><span class="w"> </span>totalWethDeposited<span class="p">);</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">wbtcValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>dscEngine<span class="p">.</span>getUsdValue<span class="p">(</span>wbtc<span class="p">,</span><span class="w"> </span>totlWbtcDeposited<span class="p">);</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span>console<span class="p">.</span>log<span class="p">(</span><span class="s2">&quot;Total Supply: &quot;</span><span class="p">,</span><span class="w"> </span>totalSupply<span class="p">);</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span>console<span class="p">.</span>log<span class="p">(</span><span class="s2">&quot;Total Weth Deposited: &quot;</span><span class="p">,</span><span class="w"> </span>totalWethDeposited<span class="p">);</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span>console<span class="p">.</span>log<span class="p">(</span><span class="s2">&quot;Total Wbtc Deposited: &quot;</span><span class="p">,</span><span class="w"> </span>totlWbtcDeposited<span class="p">);</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span>assert<span class="w"> </span><span class="p">(</span>wethValue<span class="w"> </span><span class="o">+</span><span class="w"> </span>wbtcValue<span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>totalSupply<span class="p">);</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="p">}</span>
 </code></pre></div>
 
 
