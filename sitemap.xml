@@ -2,67 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://yukijuda111.github.io/note/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/about/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/MiniSQL/cmr/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/MiniSQL/per/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/SE/chapter31/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/SE/chapter6/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/SE/chapter7/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/course/lesson1/principle/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/ERC-20/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/EVM/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/raffle/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/NFT/NFT/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://yukijuda111.github.io/note/blockchain/solidity/StableCoin/StableCoin/</loc>
-         <lastmod>2024-03-21</lastmod>
+         <lastmod>2024-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://yukijuda111.github.io/note/golang/garbage/</loc>
+         <lastmod>2024-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

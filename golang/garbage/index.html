@@ -10,25 +10,25 @@
       
       
       
-        <link rel="canonical" href="https://yukijuda111.github.io/note/blockchain/solidity/NFT/NFT/">
+        <link rel="canonical" href="https://yukijuda111.github.io/note/golang/garbage/">
       
       
-        <link rel="prev" href="../../ERC-20/">
+        <link rel="prev" href="../../MiniSQL/per/">
       
       
-        <link rel="next" href="../../EVM/">
+        <link rel="next" href="../../about/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
-        <title>NFT - Yuk1's note</title>
+        <title>垃圾回收 - Yuk1's note</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
       
 
@@ -47,7 +47,7 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -65,11 +65,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#repofoundry-nft" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -82,7 +77,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../.." title="Yuk1&#39;s note" class="md-header__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
+    <a href="../.." title="Yuk1&#39;s note" class="md-header__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -102,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NFT
+              垃圾回收
             
           </span>
         </div>
@@ -189,7 +184,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Yuk1&#39;s note" class="md-nav__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
+    <a href="../.." title="Yuk1&#39;s note" class="md-nav__button md-logo" aria-label="Yuk1's note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -219,7 +214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -236,19 +231,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -262,7 +255,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Blockchain
@@ -311,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../course/lesson1/principle/" class="md-nav__link">
+      <a href="../../blockchain/course/lesson1/principle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -337,19 +330,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -363,7 +354,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Solidity
@@ -377,7 +368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../raffle/" class="md-nav__link">
+      <a href="../../blockchain/solidity/raffle/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -398,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ERC-20/" class="md-nav__link">
+      <a href="../../blockchain/solidity/ERC-20/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -416,28 +407,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    NFT
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../blockchain/solidity/NFT/NFT/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -446,60 +419,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#repofoundry-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      repo:foundry-nft
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erc-721" class="md-nav__link">
-    <span class="md-ellipsis">
-      ERC-721 核心函数:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sepoliadoggie-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      在sepolia上部署的Doggie NFT
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-hostmood-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      在Local host上部署的Mood NFT
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -512,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EVM/" class="md-nav__link">
+      <a href="../../blockchain/solidity/EVM/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../StableCoin/StableCoin/" class="md-nav__link">
+      <a href="../../blockchain/solidity/StableCoin/StableCoin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -604,7 +523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../SE/chapter6/" class="md-nav__link">
+      <a href="../../SE/chapter6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -625,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../SE/chapter7/" class="md-nav__link">
+      <a href="../../SE/chapter7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -646,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../SE/chapter31/" class="md-nav__link">
+      <a href="../../SE/chapter31/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -709,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MiniSQL/cmr/" class="md-nav__link">
+      <a href="../../MiniSQL/cmr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -730,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../MiniSQL/per/" class="md-nav__link">
+      <a href="../../MiniSQL/per/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,17 +674,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -779,7 +700,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             golang
@@ -790,10 +711,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../golang/garbage/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -802,6 +730,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -821,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -852,50 +781,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#repofoundry-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      repo:foundry-nft
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erc-721" class="md-nav__link">
-    <span class="md-ellipsis">
-      ERC-721 核心函数:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sepoliadoggie-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      在sepolia上部署的Doggie NFT
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#local-hostmood-nft" class="md-nav__link">
-    <span class="md-ellipsis">
-      在Local host上部署的Mood NFT
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -912,21 +797,22 @@
   
 
 
-  <h1>NFT</h1>
+  <h1>垃圾回收</h1>
 
-<h2 id="repofoundry-nft">repo:<a href="https://github.com/YukiJuda111/foundry-nft">foundry-nft</a></h2>
-<p>本质是ID到拥有者地址的映射<code>mapping (uint256 =&gt; address) public tokenOwner;</code></p>
-<p>用metadata来描述NFT的属性，比如图片、音频、视频等。NFT的metadata可以存储在链上，也可以存储在链下。存储在链上的metadata可以通过IPFS来实现。</p>
-<p><strong>URI</strong>：NFT的metadata的URI，可以是链上的，也可以是链下的。链上的URI可以通过IPFS来实现。</p>
-<p><strong>IPFS</strong>: 将自己的File通过hash的到一个独特的URI，然后将这个URI存储在自己的IPFS节点上。这样，其他人就可以通过这个URI来访问自己的File了。</p>
-<h2 id="erc-721">ERC-721 核心函数:</h2>
-<p><code>_safeMint(msg.sender, tokenId)</code>：给msg.sender铸造一个tokenId的NFT。
-<code>tokenURI(tokenId)</code>：返回tokenId的metadata的URI。
-<code>_baseURI()</code>：返回metadata的baseURI, 用于拼接tokenURI(tokenId)。</p>
-<h2 id="sepoliadoggie-nft">在sepolia上部署的Doggie NFT</h2>
-<p><img alt="Doggie NFT" src="../img/result2.png" /></p>
-<h2 id="local-hostmood-nft">在Local host上部署的Mood NFT</h2>
-<p><img alt="Mood NFT" src="../img/result.png" /></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">global</span><span class="w"> </span><span class="o">*</span><span class="kt">int</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">func</span><span class="w"> </span><span class="nx">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="kt">int</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nx">global</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">x</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kd">func</span><span class="w"> </span><span class="nx">g</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="o">*</span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+</code></pre></div>
+f函数里的x变量必须在堆上分配，因为它在函数退出后依然可以通过包一级的global变量找到，虽然它是在函数内部定义的；用Go语言的术语说，这个x局部变量从函数f中逃逸了。相反，当g函数返回时，变量<em>y将是不可达的，也就是说可以马上被回收的。因此，</em>y并没有从函数g中逃逸，编译器可以选择在栈上分配*y的存储空间。</p>
 
 
 
@@ -977,10 +863,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>
